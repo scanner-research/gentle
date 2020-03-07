@@ -14,7 +14,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         libatlas3-base \
         python python-dev python-pip \
 	python3 python3-dev python3-pip \
-        wget unzip
+        wget unzip \
+	sox gfortran 
 	apt-get install -y ffmpeg || echo -n  "\n\nYou have to install ffmpeg from a PPA or from https://ffmpeg.org before you can run gentle\n\n"
 	python3 setup.py develop
 elif [[ "$OSTYPE" == "darwin"* ]]; then
