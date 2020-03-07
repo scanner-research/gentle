@@ -7,6 +7,7 @@
 #include "util/common-utils.h"
 #include <fst/script/arcsort.h>
 #include <fst/script/compile.h>
+#include "tree/context-dep.h"  // for ContextDependency
 
 int main(int argc, char *argv[]) {
 	using namespace kaldi;
@@ -14,7 +15,7 @@ int main(int argc, char *argv[]) {
 	using fst::script::ArcSort;
 	try {
 		const char *usage = "Usage: ./mkgraph [options] <proto-dir> <grammar-fst> <out-fst>\n";
-		
+
 		ParseOptions po(usage);
 		po.Read(argc, argv);
 		if (po.NumArgs() != 3) {
@@ -96,7 +97,7 @@ int main(int argc, char *argv[]) {
 		// fstminimizeencoded
 		MinimizeEncoded(&lg_fst, kDelta);
 
-		// fstarcsort --sort_type=ilabel
+		/// fstarcsort --sort_type=ilabel
 		ArcSort(&lg_fst, ILabelCompare<StdArc>());
 
 		// fstisstochastic
